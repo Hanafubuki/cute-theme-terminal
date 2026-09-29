@@ -1,0 +1,32 @@
+format = """
+[♡](bold #f5c2e7) $directory$git_branch$git_status
+[❯](bold #f5c2e7) """
+
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+style = "bold #cba6f7"
+read_only = " 󰌾"
+format = "[$path]($style) "
+
+[git_branch]
+symbol = " "
+style = "bold #f5c2e7"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold yellow"
+format = "[$all_status$ahead_behind]($style)"
+
+[nodejs]
+symbol = " "
+style = "bold yellow"
+
+[php]
+symbol = " "
+style = "bold blue"
+
+[python]
+symbol = " "
+style = "bold yellow"
