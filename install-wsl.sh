@@ -26,7 +26,7 @@ done
 
 info "Installing Ubuntu dependencies"
 run sudo apt-get update
-run sudo apt-get install -y zsh curl git fzf bat unzip ca-certificates gnupg wget zsh-autosuggestions zsh-syntax-highlighting
+run sudo apt-get install -y zsh curl git fzf bat unzip ca-certificates gnupg wget python3 zsh-autosuggestions zsh-syntax-highlighting
 
 if ! command -v eza >/dev/null 2>&1; then
   if apt-cache show eza >/dev/null 2>&1; then
