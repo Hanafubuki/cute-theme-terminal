@@ -45,7 +45,7 @@ else
 fi
 
 info "Installing terminal tools"
-run brew install bat eza fzf nvm starship zoxide zsh-autosuggestions zsh-syntax-highlighting
+run brew install bat eza fzf nvm python starship zoxide zsh-autosuggestions zsh-syntax-highlighting
 run brew install --cask iterm2 font-jetbrains-mono-nerd-font
 
 mkdir -p "$HOME/.config"
