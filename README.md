@@ -1,6 +1,6 @@
 # Cute Tokyo Terminal Theme
 
-A soft pastel terminal setup built from **Zsh**, **Starship**, **Catppuccin-inspired colors**, Nerd Fonts, and a few quality-of-life CLI tools.
+A soft pastel terminal setup built from **Zsh**, **Starship**, **Tokyo Starry Night**, Nerd Fonts, and a few quality-of-life CLI tools.
 
 It supports:
 
@@ -28,7 +28,8 @@ The installers configure:
 - fzf
 - zoxide
 - NVM
-- Catppuccin-style colors
+- **Tokyo Starry Night** terminal colors
+- custom pastel Starship and Zsh syntax colors
 - the repository's `zshrc`
 - the repository's `starship.toml`
 
@@ -59,7 +60,7 @@ The installer will:
 6. Install `zshrc` and `starship.toml`.
 7. Detect the Homebrew prefix so both Apple Silicon and Intel Macs work.
 8. Enable the macOS fzf integration.
-9. Open `iterm-profile.json` for iTerm2 import.
+9. Open `iterm-profile.json`, which contains the Tokyo Starry Night-style iTerm2 profile.
 10. Set Zsh as the default shell when needed.
 
 After it finishes, open a new iTerm2 window. If the font was not selected automatically, choose:
@@ -101,8 +102,25 @@ The installer will:
 8. Enable Ubuntu fzf key bindings and completion.
 9. Set Zsh as the default shell.
 10. Detect your Windows username and replace `/mnt/c/Users/<name>` with `~` in the displayed Starship path.
-11. Add the **Catppuccin Mocha** color scheme to Windows Terminal through its fragment system when Windows integration is available.
+11. Add the **Tokyo Starry Night** color scheme to Windows Terminal through its fragment system when Windows integration is available.
 12. Check whether JetBrainsMono Nerd Font is already installed on Windows.
+
+The Windows scheme uses the Tokyo Night Storm palette:
+
+```text
+Background  #24283B
+Foreground  #C0CAF5
+Red         #F7768E
+Green       #9ECE6A
+Yellow      #E0AF68
+Blue        #7AA2F7
+Purple      #BB9AF7
+Cyan        #7DCFFF
+```
+
+After installation, select:
+
+**Windows Terminal → Settings → Profiles → Ubuntu → Appearance → Color scheme → Tokyo Starry Night**
 
 If the Nerd Font is not installed on Windows, the installer will tell you. Install it once from [Nerd Fonts](https://www.nerdfonts.com/font-downloads), then select it under:
 
@@ -146,6 +164,16 @@ opens an interactive fuzzy directory picker.
 
 Press `Ctrl + R` for fuzzy command-history search with fzf.
 
+## Theme layers
+
+The terminal theme and shell colors are separate:
+
+- **Tokyo Starry Night** controls the terminal background and ANSI palette in iTerm2 / Windows Terminal.
+- **Starship** controls the heart, prompt arrow, directory, Git branch and Git status colors.
+- **zsh-syntax-highlighting** controls command, option, string, path and error colors as you type.
+
+This means you can change the Starship/Zsh pastel accents without changing the Tokyo Starry Night terminal background.
+
 ## Files
 
 ```text
@@ -157,6 +185,8 @@ cute-theme-terminal/
 ├── zshrc
 ├── starship.toml
 ├── iterm-profile.json
+├── tests/
+│   └── test_installers.sh
 └── Brewfile
 ```
 
