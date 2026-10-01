@@ -17,6 +17,12 @@ A soft pastel terminal setup built from Zsh, Starship, and an iTerm2 profile. Th
 
 The `zshrc` currently uses Homebrew’s Apple Silicon path for NVM (`/opt/homebrew/opt/nvm`). On an Intel Mac, adjust that path to the location returned by `brew --prefix nvm`.
 
+### Windows
+
+Use **Windows 10/11 with WSL2 and Ubuntu** to run this Zsh configuration. Install WSL from an Administrator PowerShell window with `wsl --install`, restart if prompted, then launch Ubuntu and create its Linux user. Install [Windows Terminal](https://aka.ms/terminal) for a convenient terminal window. The included iTerm2 profile is macOS-only; Windows Terminal uses its own profile color settings.
+
+Install a Nerd Font in Windows to render the prompt symbols. The theme’s command-line tools and shell plugins must be installed inside Ubuntu/WSL; Windows versions of those tools are not used by the WSL shell.
+
 ## Installation
 
 1. Clone this repository and enter its directory:
@@ -64,6 +70,55 @@ The `zshrc` currently uses Homebrew’s Apple Silicon path for NVM (`/opt/homebr
    ```sh
    source ~/.zshrc
    ```
+
+### Windows installation (WSL2 + Ubuntu)
+
+Run this first in **Administrator PowerShell** on Windows, then restart if requested and launch Ubuntu:
+
+```powershell
+wsl --install
+```
+
+In Ubuntu, install Zsh, fzf, bat, and the Zsh plugins:
+
+```sh
+sudo apt update
+sudo apt install -y zsh curl git fzf bat zsh-autosuggestions zsh-syntax-highlighting
+```
+
+Install eza using its [official Debian/Ubuntu instructions](https://github.com/eza-community/eza/blob/main/INSTALL.md#debian-and-ubuntu), Starship using its [official installer](https://starship.rs/guide/#installation), and zoxide using its [official WSL installer](https://github.com/ajeetdsouza/zoxide#installation):
+
+```sh
+curl -sS https://starship.rs/install.sh | sh
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+```
+
+Install NVM in WSL (the current NVM install script is documented in the [NVM README](https://github.com/nvm-sh/nvm#installing-and-updating)):
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | PROFILE=/dev/null bash
+```
+
+Then clone the theme inside the Ubuntu filesystem and copy the config files:
+
+```sh
+git clone https://github.com/Hanafubuki/cute-theme-terminal.git
+cd cute-theme-terminal
+mkdir -p ~/.config
+cp zshrc ~/.zshrc
+cp starship.toml ~/.config/starship.toml
+```
+
+Edit `~/.zshrc` for Linux paths: replace the two Homebrew plugin `source` lines with `/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh` and `/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`; replace the macOS NVM initialization lines at the top with:
+
+```sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+
+The Ubuntu `bat` package may provide the command as `batcat`. If the `cat` alias cannot find `bat`, add `alias bat=batcat` before the existing `alias cat="bat"`. The Windows-specific fzf key-binding and completion lines in `zshrc` are written for a Linux-style `/usr/share/doc/fzf/examples/` path; uncomment those two lines if that path exists in your Ubuntu install. Finally, start Zsh with `zsh`, then optionally install Node.js and Corepack with `nvm install --lts` and `npm install --global corepack`.
+
+The `Brewfile` is for Homebrew on macOS and is not used for this WSL setup. Install the iTerm2 profile only on a Mac; configure Windows Terminal’s colors separately if you want a matching palette.
 
 ## How the pieces work together
 
