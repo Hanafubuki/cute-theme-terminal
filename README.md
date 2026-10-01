@@ -11,6 +11,8 @@ A soft pastel terminal setup built from Zsh, Starship, and an iTerm2 profile. Th
 
 ## Requirements
 
+### Mac
+
 - macOS with Zsh and [Homebrew](https://brew.sh/)
 - [iTerm2](https://iterm2.com/) for the included terminal color profile (the shell prompt configuration can also be used in other terminal emulators)
 - A [Nerd Font](https://www.nerdfonts.com/) for the symbols to display as intended; the Brewfile installs JetBrainsMono Nerd Font
@@ -23,7 +25,7 @@ Use **Windows 10/11 with WSL2 and Ubuntu** to run this Zsh configuration. Instal
 
 Install a Nerd Font in Windows to render the prompt symbols. The theme’s command-line tools and shell plugins must be installed inside Ubuntu/WSL; Windows versions of those tools are not used by the WSL shell.
 
-## Installation
+## Installation (Mac)
 
 1. Clone this repository and enter its directory:
 
