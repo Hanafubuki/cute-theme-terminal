@@ -124,7 +124,7 @@ fi
 
 configure_windows_terminal() {
   command -v powershell.exe >/dev/null 2>&1 || { warn "powershell.exe not available; skipping Windows Terminal setup."; return 0; }
-  info "Adding Catppuccin Mocha to Windows Terminal"
+  info "Adding Tokyo Starry Night to Windows Terminal"
   local localappdata
   localappdata="$(powershell.exe -NoProfile -Command '[Environment]::GetFolderPath("LocalApplicationData")' 2>/dev/null | tr -d '\r' || true)"
   if [[ -z "$localappdata" ]]; then warn "Could not locate Windows LocalAppData; see README_MANUAL_INSTALL.md."; return 0; fi
@@ -138,13 +138,27 @@ configure_windows_terminal() {
     cat > "$fragment_file" <<'JSON'
 {
   "schemes": [{
-    "name": "Catppuccin Mocha", "background": "#1E1E2E", "foreground": "#CDD6F4",
-    "cursorColor": "#F5E0DC", "selectionBackground": "#585B70", "black": "#45475A",
-    "red": "#F38BA8", "green": "#A6E3A1", "yellow": "#F9E2AF", "blue": "#89B4FA",
-    "purple": "#F5C2E7", "cyan": "#94E2D5", "white": "#BAC2DE", "brightBlack": "#585B70",
-    "brightRed": "#F38BA8", "brightGreen": "#A6E3A1", "brightYellow": "#F9E2AF",
-    "brightBlue": "#89B4FA", "brightPurple": "#F5C2E7", "brightCyan": "#94E2D5",
-    "brightWhite": "#A6ADC8"
+    "name": "Tokyo Starry Night",
+    "background": "#24283B",
+    "foreground": "#C0CAF5",
+    "cursorColor": "#C0CAF5",
+    "selectionBackground": "#364A82",
+    "black": "#1D202F",
+    "red": "#F7768E",
+    "green": "#9ECE6A",
+    "yellow": "#E0AF68",
+    "blue": "#7AA2F7",
+    "purple": "#BB9AF7",
+    "cyan": "#7DCFFF",
+    "white": "#A9B1D6",
+    "brightBlack": "#4E5575",
+    "brightRed": "#F7768E",
+    "brightGreen": "#9ECE6A",
+    "brightYellow": "#E0AF68",
+    "brightBlue": "#7AA2F7",
+    "brightPurple": "#BB9AF7",
+    "brightCyan": "#7DCFFF",
+    "brightWhite": "#C0CAF5"
   }]
 }
 JSON
@@ -157,5 +171,6 @@ configure_windows_terminal
 
 info "Installation complete"
 printf '\nClose Windows Terminal completely and open it again. New Ubuntu shells should start with zsh and the theme.\n'
+printf 'Select Tokyo Starry Night under Windows Terminal → Settings → Profiles → Ubuntu → Appearance → Color scheme.\n'
 printf 'If the Nerd Font is not installed, follow README_MANUAL_INSTALL.md for that one Windows-side step.\n'
 printf 'Your previous config was preserved with a .backup-%s suffix when present.\n' "$TIMESTAMP"
