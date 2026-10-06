@@ -1,5 +1,9 @@
 # Cute Tokyo Terminal Theme
 
+<p align="center">
+  <img src="imgs/main.png" alt="Terminal prompt">
+</p>
+
 A soft pastel terminal setup built from **Zsh**, **Starship**, **Tokyo Starry Night**, Nerd Fonts, and a few quality-of-life CLI tools.
 
 It supports:
@@ -7,14 +11,38 @@ It supports:
 - **macOS** with **iTerm2**
 - **Windows 10/11** with **Windows Terminal + WSL2 + Ubuntu**
 
-The intended prompt looks roughly like:
+## What it does
 
-```text
-♡ ~/Projects/my-project  main
-❯
-```
+- **Command suggestions as you type**: zsh-autosuggestions shows a greyed-out completion based on your history. Press `→` to accept it.
+- **Typo detection before you hit Enter**: zsh-syntax-highlighting colors valid commands, options, strings and paths, and turns unknown commands red.
+- **Git status at a glance**: the Starship prompt shows the full current directory, the Git branch, and whether you have staged, modified or untracked files or are ahead or behind the remote.
+- **Better `ls`**: `ls` and `ll` use eza, so you get icons, Git status per file, and folders listed first.
+- **Readable file previews**: `cat` uses bat, which adds syntax highlighting and line numbers.
+- **Smarter `cd`**: zoxide remembers the directories you visit, so `z <part-of-name>` jumps straight there and `zi` lets you pick one interactively.
+- **Fuzzy search**: fzf powers `Ctrl + R` history search and fuzzy file and directory completion.
+- **Node version management**: NVM is set up so you can switch between Node.js versions per project.
+- **Git shortcuts**: `gacp <message>` adds, commits and pushes the current branch in one go, and `gcp` switches to `main` and pulls.
+- **Safe install**: your existing `~/.zshrc` and `starship.toml` are backed up before anything is replaced, and `DRY_RUN=1` lets you preview the changes first.
 
-## What gets installed
+## Contents
+- [Installation](#installation)
+  - [What gets installed](#what-gets-installed)
+  - [macOS](#macos)
+  - [Windows / WSL2](#windows--wsl2)
+  - [Dry run](#dry-run)
+- [Useful commands](#useful-commands)
+  - [Files and folders](#files-and-folders)
+  - [Navigation](#navigation)
+  - [Git](#git)
+  - [Node.js](#nodejs)
+  - [Keyboard shortcuts (fzf)](#keyboard-shortcuts-fzf)
+- [Theme layers](#theme-layers)
+- [Files](#files)
+- [Manual installation](#manual-installation)
+- [Safety](#safety)
+
+## Installation
+### What gets installed
 
 The installers configure:
 
@@ -35,8 +63,8 @@ The installers configure:
 
 Existing `~/.zshrc` and `~/.config/starship.toml` files are backed up with a timestamp before replacement.
 
-## macOS
 
+### macOS
 Clone the repository:
 
 ```sh
@@ -67,7 +95,7 @@ After it finishes, open a new iTerm2 window. If the font was not selected automa
 
 **iTerm2 → Settings → Profiles → Text → JetBrainsMono Nerd Font**
 
-## Windows / WSL2
+### Windows / WSL2
 
 If WSL is not installed yet, open Administrator PowerShell and run:
 
@@ -128,7 +156,7 @@ If the Nerd Font is not installed on Windows, the installer will tell you. Insta
 
 After installation, completely close Windows Terminal and reopen it.
 
-## Dry run
+### Dry run
 
 Both installers support a dry-run mode for inspecting what they would do without installing packages or replacing configuration:
 
@@ -143,34 +171,68 @@ DRY_RUN=1 bash install-wsl.sh
 ```
 
 ## Useful commands
-List all files and directories in alphabetical order, with the folders on top and with nice and colourful icons
+
+<p align="center">
+  <img src="imgs/prefill.png" alt="Command prefill">
+</p>
+
+### Files and folders
+
+List files with icons.
+```sh
+ls
+```
+
+Show a detailed list of all files, including hidden ones, with icons and Git status. Folders are listed first.
 ```sh
 ll
 ```
 
-Shows a long, Git-aware directory listing with icons using eza.
+Show a file with syntax highlighting and line numbers, using bat.
+```sh
+cat <file>
+```
+
+### Navigation
+
+Jump to a folder you've visited before by typing part of its name, using zoxide.
 ```sh
 z dashboard
 ```
 
-Uses zoxide to jump to a previously visited directory.
+Open an interactive fuzzy picker of the folders you've visited before.
 ```sh
 zi
 ```
 
-Git add, commit and push branch
+### Git
+
+Add all changes, commit them with a message, and push the current branch.
 ```sh
 gacp <commit message>
 ```
 
-Git checkout main && git pull
+Switch to `main` and pull the latest changes.
 ```sh
 gcp
 ```
 
-opens an interactive fuzzy directory picker.
+### Node.js
 
-Press `Ctrl + R` for fuzzy command-history search with fzf.
+Install and switch Node.js versions with NVM.
+```sh
+nvm install 20
+nvm use 20
+nvm ls
+```
+
+### Keyboard shortcuts (fzf)
+
+- `Ctrl + R`: fuzzy-search your command history.
+- `Ctrl + T`: fuzzy-search files and insert the path into the command line.
+- `Alt + C`: fuzzy-search folders and `cd` into the one you pick.
+- `**` + `Tab`: fuzzy completion, for example `vim **<Tab>` or `cd **<Tab>`.
+- `→`: accept the greyed-out autosuggestion.
 
 ## Theme layers
 
