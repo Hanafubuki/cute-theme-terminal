@@ -143,29 +143,27 @@ DRY_RUN=1 bash install-wsl.sh
 ```
 
 ## Useful commands
-
+List all files and directories in alphabetical order, with the folders on top and with nice and colourful icons
 ```sh
 ll
 ```
 
-shows a long, Git-aware directory listing with icons using eza.
-
+Shows a long, Git-aware directory listing with icons using eza.
 ```sh
 z dashboard
 ```
 
-uses zoxide to jump to a previously visited directory.
-
+Uses zoxide to jump to a previously visited directory.
 ```sh
 zi
 ```
 
-git add, commit and push branch
+Git add, commit and push branch
 ```sh
 gacp <commit message>
 ```
 
-git checkout main && git pull
+Git checkout main && git pull
 ```sh
 gcp
 ```
