@@ -160,6 +160,16 @@ uses zoxide to jump to a previously visited directory.
 zi
 ```
 
+git add, commit and push branch
+```sh
+gacp <commit message>
+```
+
+git checkout main && git pull
+```sh
+gcp
+```
+
 opens an interactive fuzzy directory picker.
 
 Press `Ctrl + R` for fuzzy command-history search with fzf.
