@@ -8,6 +8,13 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ls="eza --icons"
 alias ll="eza -lah --icons --git --group-directories-first"
 alias cat="bat"
+alias gcp="git checkout main && git pull"
+gacp() {
+  branch=$(git branch --show-current)
+  git add . &&
+  git commit -m "$*" &&
+  git push -u origin "$branch"
+}
 
 # Smarter cd
 eval "$(zoxide init zsh)"
